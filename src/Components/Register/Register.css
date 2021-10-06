@@ -1,0 +1,8 @@
+.register{
+  height: 100vh;
+  padding:1rem !important;
+
+  align-items: center !important;
+    background-image: linear-gradient(#C5CBE3, #4056A1);
+
+}
