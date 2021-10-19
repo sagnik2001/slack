@@ -1,0 +1,5 @@
+@media (max-width:600px) {
+  .side_bar{
+    min-width:20vh !important;
+  }
+}

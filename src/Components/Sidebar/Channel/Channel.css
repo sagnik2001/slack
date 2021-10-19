@@ -1,0 +1,15 @@
+.mod{
+  top: 30% !important;
+
+
+}
+
+.ui.menu .item{
+    color : #FEF1E6 !important;
+}
+.click:hover{
+    cursor: pointer;
+}
+.ui.menu .item.active{
+    background : #1264a3 !important;
+}

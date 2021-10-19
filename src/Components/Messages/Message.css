@@ -1,0 +1,7 @@
+.messageContent{
+  height:520px;
+  overflow-y: scroll;
+}
+.whole{
+  padding-top:20px;
+}
