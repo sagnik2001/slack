@@ -5,8 +5,8 @@ const MessageHeader=(props)=>{
      <Segment clearing>
          <Header floated="left" fluid="true" as ="h2">
             <span>
-              {props.channelName}
-               <Icon name="comment alternate outline"/>
+             {(props.isPrivateChat ? "@ " : "# ") + props.channelName}
+              { !props.isPrivateChat ? <Icon name="comment alternate outline"/> : <Icon name="envelope square"/>}
             </span>
             <Header.Subheader>{props.uniqUser} User{props.uniqUser<=1 ? "" : "s"}</Header.Subheader>
          </Header>

@@ -10,7 +10,7 @@ function App() {
 <Grid.Column className="modal">
     <Message />
 </Grid.Column>
-  <Grid.Column width={3}>
+  <Grid.Column width={1}>
      <span></span>
   </Grid.Column>
    </Grid>

@@ -43,6 +43,7 @@ const Channel=(props)=>{
            onClick={() => props.selectChannel(channel)}
             active={props.channel && channel.id === props.channel.id }
           >
+          {"# "+channel.name}
         </Menu.Item>
       })
     }
@@ -83,7 +84,7 @@ const Channel=(props)=>{
   return(
     <>
        <Menu.Menu>
-           <Menu.Item>
+           <Menu.Item style={{fontSize:"17px"}}>
               <span>
                   <Icon name="edit outline icon"/> Channels &nbsp;
               </span>
@@ -115,7 +116,7 @@ const Channel=(props)=>{
                    <Form.Input
                      name="Description"
                      value={AddChannelState.Description}
-                     
+
                      onChange={handleInput}
                      type="text"
                      placeholder="Enter Channel description"
