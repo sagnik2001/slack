@@ -3,7 +3,7 @@ import { Menu, Icon} from 'semantic-ui-react';
 import { connect } from "react-redux";
 import {setChannel} from "../../../Components/store/actioncreator"
 import firebase from "../../../Components/database/Firebase";
-
+import Notification from "../Notifications/Notifications"
 const PvtChannel=(props)=>{
 
   const [Users,setUsersState]=useState([])
@@ -63,14 +63,22 @@ const PvtChannel=(props)=>{
           >
           <Icon name="circle" color={`${userstatus.indexOf(user.id) !== -1 ? "green" : "red"}`}/>
           {"@ "+user.name }
+          <Notification user={props.user} channel={props.channel} notifyid={generateChannelId(user.id)}/>
         </Menu.Item>
       })
     }
   }
   const selectUser=(user)=>{
     let userTemp={...user}
-    userTemp.id=generateChannelId(user.id)
+    userTemp.id=generateChannelId(user.id)//To which channel its going is stored in UserTemp
+    lastVisit(props.user,props.channel)
+    lastVisit(props.user,userTemp)
     props.selectChannel(userTemp)
+  }
+  const lastVisit=(user,channel)=>{
+    const lastVisited = setUsers.child(user.uid).child("lastVisited").child(channel.id)
+    lastVisited.set(firebase.database.ServerValue.TIMESTAMP)
+    lastVisited.onDisconnect().set(firebase.database.ServerValue.TIMESTAMP)
   }
   const generateChannelId = (userId) => {
         if (props.user.uid < userId) {

@@ -3,6 +3,7 @@ import { Menu, Icon, Modal, Button, Form, Segment } from 'semantic-ui-react';
 import { connect } from "react-redux";
 import {setChannel} from "../../../Components/store/actioncreator"
 import firebase from "../../../Components/database/Firebase";
+import Notification from "../Notifications/Notifications"
 import "./Channel.css"
 const Channel=(props)=>{
   const [modalOpen,SetModalOpen]=useState(false)
@@ -44,6 +45,7 @@ const Channel=(props)=>{
             active={props.channel && channel.id === props.channel.id }
           >
           {"# "+channel.name}
+            <Notification user={props.user} channel={props.channel} notifyid={channel.id}/>
         </Menu.Item>
       })
     }

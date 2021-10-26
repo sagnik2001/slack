@@ -14,13 +14,15 @@ const userReducer=(state=defaultUserState,action)=>{
   return state
 }
 let defaultChannelState = {
-  currentChannel:null
+  currentChannel:null,
+  loading:true
 }
 const channelReducer=(state=defaultChannelState,action)=>{
   if(action.type===SET_CHANNEL)
   {
     let payload = action.payload;
     state={...payload}
+    state.loading=false
     return state
   }
   return state

@@ -1,4 +1,4 @@
-import {React,useState,useEffect} from 'react';
+import {React,useState,useEffect,useRef} from 'react';
 import MessageHeader from "./MessageHeader/MessageHeader"
 import MessageInput from "./MessageInput/MessageInput"
 import MessageContent from "./MessageContent/MessageContent"
@@ -11,6 +11,7 @@ const Message=(props)=>{
   const messageRef=firebase.database().ref("messages")
   const [messageState,SetMessageState] = useState([])
   const [SearchState,SetSearchState] = useState("")
+  let divRef=useRef()
   useEffect(()=>{
     if(props.channel){
       SetMessageState([])
@@ -24,15 +25,21 @@ const Message=(props)=>{
     return ()=>messageRef.child(props.channel.id).off()
   }
 },[props.channel])
+const onLoad =()=>{
+  divRef.scrollIntoView({behavior : 'smooth'});
+}
   const displayMessage=()=>{
     let messagetoDisplay= SearchState ? filterTerm():messageState
     if(messagetoDisplay.length > 0)
     {
       return messagetoDisplay.map((message)=>{
-        return <MessageContent check={message.user.id===props.user.uid} key={message.timestamp} message={message}/>
+        return <MessageContent onLoad={onLoad} check={message.user.id===props.user.uid} key={message.timestamp} message={message}/>
       })
     }
   }
+  useEffect(()=>{
+      divRef.scrollIntoView({behavior : 'smooth'});
+  },[messageState])
   const userCount=()=>{
     const count=messageState.reduce((acc,message)=>{
       if(!acc.includes(message.user.name)){
@@ -62,6 +69,7 @@ const Message=(props)=>{
         <Segment className="messageContent">
             <Comment.Group>
              {displayMessage()}
+             <div ref={currentEle=>divRef=currentEle} />
             </Comment.Group>
         </Segment>
        <MessageInput/>

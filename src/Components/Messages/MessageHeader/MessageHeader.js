@@ -2,8 +2,8 @@ import React from 'react';
 import {Segment,Header,Input,Icon} from "semantic-ui-react"
 const MessageHeader=(props)=>{
   return(
-     <Segment clearing>
-         <Header floated="left" fluid="true" as ="h2">
+     <Segment clearing >
+         <Header floated="left" fluid="true" as ="h2" >
             <span>
              {(props.isPrivateChat ? "@ " : "# ") + props.channelName}
               { !props.isPrivateChat ? <Icon name="comment alternate outline"/> : <Icon name="envelope square"/>}

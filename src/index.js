@@ -9,13 +9,15 @@ import Register from "./Components/Register/Register";
 import LogIn from "./Components/LogIn/LogIn";
 import firebase from "./Components/database/Firebase";
 import {setUser} from "./Components/store/actioncreator.js"
-
+import Autoscroll from "./Components/AutoScroll/Autoscroll"
 import 'semantic-ui-css/semantic.min.css'
+import "./index.css"
 const store=createStore(combinedReducers);
 
 const Index = (props) => {
 
   useEffect(() => {
+      const ac = new AbortController();
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         props.setUser(user);
@@ -25,19 +27,24 @@ const Index = (props) => {
         props.history.push("/login");
       }
     })
+    return () => ac.abort();
   }, []);
 
   console.log("Debug", props.currentUser);
   return (
+    <>
+    
     <Switch>
       <Route path="/login" component={LogIn} />
       <Route path="/register" component={Register} />
       <Route path="/" component={App} />
-    </Switch>)
+    </Switch>
+    </>)
 }
 const mapStateToProps = (state) =>{
   return{
    currentUser: state.user.currentUser,
+   loading:state.channel.loading
  }
 }
 const mapDispatchToProps = (dispatch) =>{

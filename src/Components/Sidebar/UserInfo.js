@@ -19,8 +19,8 @@ const signOut=()=>{
        <Grid.Column>
           <Grid.Row>
              <Header style={{padding:"1.3rem"}} inverted as="h2">
-                <Icon name="slack"/>
-                <Header.Content>Slack</Header.Content>
+                <Icon name="wechat"/>
+                <Header.Content>Chatify</Header.Content>
              </Header>
              <Header inverted as="h4" style={{padding:".75rem"}}>
              <Dropdown

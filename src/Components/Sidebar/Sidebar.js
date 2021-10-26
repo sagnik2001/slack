@@ -7,7 +7,7 @@ import "./Sidebar.css";
 const style = {
     backgroundColor: "#4a154b",
     fontSize: "1.2rem",
-
+      overflowY: 'scroll',
     };
 export const Sidebar = () => {
     return (< Menu vertical fixed="left" borderless size="large" style={style} >
