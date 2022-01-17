@@ -1,8 +1,8 @@
 import {React,useState} from 'react';
 import {Grid,Form,Segment,Icon,Header,Button,Message} from 'semantic-ui-react';
-import firebase from '../server/firebase'
+import firebase from '../../server/firebase'
 import {Link} from "react-router-dom"
-import "./Register.css"
+import "./Auth.css"
 const Register=()=>{
   let user={
     username:"",
