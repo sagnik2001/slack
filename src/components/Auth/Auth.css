@@ -1,6 +1,21 @@
+
 .register{
     height: 100vh;
     padding:2rem;
-    align-items: center;
-    background-image: linear-gradient(#C5CBE3, #4056A1);
+    align-items: right;
+    background-color: rgba(244,237,228,.5);
+}
+.logo{
+    margin-left: 550px;
+    margin-top: -2500px;
+    width: 500px;
+    height: 500px;
+}
+.downlogo{
+    margin-top: 300px;
+    margin-left: -700px;
+}
+.top-logo{
+    width: 20px;
+    height: 20px;
 }

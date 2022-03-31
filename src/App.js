@@ -7,13 +7,13 @@ function App() {
   return (
  
   
-      <Grid columns="equal">
+      <Grid columns="equal" style={{backgroundColor:"rgba(7, 9, 10, 0.815)"}}>
         <Sidebar />
-        <Grid.Column className="messagepanel">
+        <Grid.Column className="messagepanel" >
           <Messages />
         </Grid.Column>
   
-        <Grid.Column width={3}>
+        <Grid.Column width={3} className="messageSide">
           <span>
   
           </span>

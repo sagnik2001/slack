@@ -1,3 +1,13 @@
+# Description
+A slack clone with private and common workspace with sending messsages and images functionality.
+
+# Hosted Link
+
+
+# Screenshot
+![name-of-you-image](https://i.postimg.cc/ncdGBxSx/ss.png)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

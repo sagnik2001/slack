@@ -10,8 +10,8 @@ TimeAgo.locale(en);
 const timeAgo = new TimeAgo();
 
 const MessageContent = (props) => {
-    return <Comment>
-        <Comment.Avatar src={props.message.user.avatar} />
+    return <Comment >
+        <Comment.Avatar src={props.message.user.avatar}  />
         <Comment.Content className={props.ownMessage ? "ownMessage" : null}>
             <Comment.Author as="a">{props.message.user.name}</Comment.Author>
             <Comment.Metadata>{timeAgo.format(props.message.timestamp)}</Comment.Metadata>

@@ -94,7 +94,7 @@ const generateChannelId=(userId)=>{
   return  <Menu.Menu style={{ marginTop: '35px' }}>
       <Menu.Item style={{fontSize : '17px'}}>
           <span>
-              <Icon name="mail" /> Chat
+              <Icon name="mail" />Direct messages
           </span>
           ({usersState.length - 1 })
       </Menu.Item>

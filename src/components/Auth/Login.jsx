@@ -4,6 +4,9 @@ import './Auth.css'
 import firebase from '../../server/firebase'
 import {Grid,Form,Segment,Icon,Header,Button,Message} from 'semantic-ui-react';
 import {Link} from "react-router-dom"
+import sidelogo from '../../images/sidelogo.png'
+import downlogo from '../../images/downlogo.png'
+import logo from '../../images/slack.png'
 
 
  const Login = () => {
@@ -26,6 +29,7 @@ import {Link} from "react-router-dom"
         maxWidth:"500px",
        alignItems: "center",
        justifyContent:"center",
+       marginTop:"100px"
       }
     
     const handleInput = (event) =>{
@@ -69,11 +73,12 @@ import {Link} from "react-router-dom"
         return  Error.map((err,index)=><p key={index}>{err.message}</p>)
         }
     return (
-        <div>
-        <Grid verticalalign="middle" textAlign="center" className="register" >
+        <div >
+        <Grid verticalalign="left" textAlign="center" className="register" >
         <Grid.Column style={mystyle}>
             <Header icon as ="h2">
-                <Icon name="slack"/>
+                {/* <Icon name="slack"/>  */}
+                <img src={logo} style={{height:"30px",width:"30px"}}/>
                 Login
             </Header>
             <Form onSubmit={onSubmitHandler}>
@@ -99,7 +104,7 @@ import {Link} from "react-router-dom"
                     />
                     
                 </Segment>
-                    <Button disabled={isLoading} loading={isLoading}>
+                    <Button disabled={isLoading} loading={isLoading} style={{backgroundColor:"#611f69",color:"white"}}>
                         <Icon name=" sign-in"/>
                         Login</Button>
             </Form>
@@ -110,10 +115,17 @@ import {Link} from "react-router-dom"
             </Message>}
             
             <Message>
-            Not a user? <Link to="/register" >&nbsp;<Icon name="hand point right"/>Register</Link>
+            Dont have a account? <Link to="/register" >Register</Link>
             </Message>
+    <img src={downlogo} className='downlogo'/>
+
+        <img src={sidelogo} className='logo'/>
+
         </Grid.Column>
+
     </Grid>
+
+
     </div>
     )
 }

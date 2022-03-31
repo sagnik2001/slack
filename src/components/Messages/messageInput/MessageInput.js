@@ -63,7 +63,7 @@ import {v4 as uuidv4 } from "uuid"
             .catch((err) => console.log(err));
     }
 
-    return <Segment>
+    return <Segment style={{backgroundColor:"rgb(180,180,185)"}}>
         <Input
             onChange={onMessageChange}
             fluid={true}
