@@ -1,11 +1,12 @@
 # Description
-A slack clone with private and common workspace with sending messsages and images functionality.
+A chat application built with ReactJs and Firebase enables real-time messaging.
 
 # Hosted Link
 
 
 # Screenshot
-![name-of-you-image](https://i.postimg.cc/ncdGBxSx/ss.png)
+![image](https://github.com/sulogna2001/chatify/assets/74129295/5a2c1638-099c-4f76-beb2-8e5d25268a5f)
+
 
 
 # Getting Started with Create React App
