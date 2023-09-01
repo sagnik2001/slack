@@ -1,21 +1,27 @@
 
-.register{
-    height: 100vh;
-    padding:2rem;
-    align-items: right;
-    background-color: rgba(244,237,228,.5);
+.main_container{
+    display: flex;
+    padding: 5rem;
+    justify-content: center;
+    margin-top: 5rem;
 }
-.logo{
-    margin-left: 550px;
-    margin-top: -2500px;
-    width: 500px;
+.left_container{
+    padding: 5rem;
+  
+}
+.right_container{
+    float: left;
     height: 500px;
 }
-.downlogo{
-    margin-top: 300px;
-    margin-left: -700px;
+.logo{
+    height: 100%;
+    max-width: 100%;
+    display: block;
+    margin: auto;
 }
-.top-logo{
-    width: 20px;
-    height: 20px;
+@media only screen and (max-width: 1016px){
+    .main_container{
+        display: grid;
+        padding: 10rem;
+    }
 }

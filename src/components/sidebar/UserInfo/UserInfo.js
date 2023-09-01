@@ -1,10 +1,7 @@
 import React from "react";
-import { Grid, Header, Icon, Image, Dropdown } from "semantic-ui-react";
+import { Grid, Header,Image, Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
 import firebase from "../../../server/firebase";
-import logo from '../../../images/slack.png';
-
-
 import "./UserInfo.css";
 
 const UserInfo = (props) => {
@@ -22,6 +19,7 @@ const UserInfo = (props) => {
       .auth()
       .signOut()
       .then(() => console.log("user signed out"));
+      window.location.reload();
   };
 
   if (props.user) {
@@ -30,11 +28,7 @@ const UserInfo = (props) => {
         <Grid.Column>
           <Grid.Row className="userinfo_grid_row">
             <Header inverted as="h2">
-              {/* <Icon name="slack" /> */}
-          <img src={logo} style={{ height: "30px", width: "30px" }} />
-
-              
-              <Header.Content>Slack</Header.Content>
+              <Header.Content>Chatify</Header.Content>
             </Header>
             <Header className="userinfo_displayname" inverted as="h4">
               <Dropdown

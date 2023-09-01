@@ -10,7 +10,7 @@ import {
 } from "semantic-ui-react";
 import firebase from "../../server/firebase";
 import { Link } from "react-router-dom";
-import sidelogo from "../../images/sidelogo.png";
+import register from "../../images/register.png";
 import logo from "../../images/slack.png";
 
 import "./Auth.css";
@@ -134,13 +134,12 @@ const Register = () => {
     return Error.map((err, index) => <p key={index}>{err.message}</p>);
   };
   return (
-    <Grid verticalalign="middle" textAlign="center" className="register">
-      <Grid.Column style={mystyle}>
-        <Header icon as="h2">
-          {/* <Icon name="slack"/> */}
-          <img src={logo} style={{ height: "30px", width: "30px" }} />
+    <div className="main_container">
+      <div className="left_container">
+        <Header icon as="h1">
           Register
         </Header>
+
         <Form onSubmit={onSubmitHandler}>
           <Segment stacked>
             <Form.Input
@@ -208,10 +207,11 @@ const Register = () => {
             LogIn
           </Link>
         </Message>
-
-        <img src={sidelogo} className="logo" />
-      </Grid.Column>
-    </Grid>
+      </div>
+      <div className="right_container">
+        <img src={register} className="logo" alt="right" />
+      </div>
+    </div>
   );
 };
 export default Register;
