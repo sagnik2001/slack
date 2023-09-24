@@ -1,6 +1,5 @@
 import { React, useState } from "react";
 import {
-  Grid,
   Form,
   Segment,
   Icon,
@@ -23,6 +22,7 @@ const Register = () => {
   };
 
   let errors = [];
+  //firabse function which return the user collection 
   let userDatabaseCollection = firebase.database().ref("users");
 
   const [User, setUser] = useState(user);
@@ -38,12 +38,7 @@ const Register = () => {
       return currentuser;
     });
   };
-  const mystyle = {
-    maxWidth: "500px",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: "100px",
-  };
+
   const checkform = () => {
     if (isFormEmpty()) {
       setError((error) =>
@@ -118,6 +113,7 @@ const Register = () => {
         });
     }
   };
+  //final function to save user in the db
   const saveData = (createUser) => {
     SetLoading(true);
     userDatabaseCollection

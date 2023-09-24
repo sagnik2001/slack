@@ -25,12 +25,6 @@ const Login = () => {
   const [Error, setError] = useState(errors);
   const [isLoading, SetLoading] = useState(false);
 
-  const mystyle = {
-    maxWidth: "500px",
-    alignItems: "center",
-    justifyContent: "center",
-    marginTop: "100px",
-  };
 
   const handleInput = (event) => {
     let target = event.target;
@@ -51,7 +45,6 @@ const Login = () => {
         .signInWithEmailAndPassword(User.email, User.password)
         .then((user) => {
           SetLoading(false);
-          console.log(user);
         })
         .catch((servererr) => {
           SetLoading(false);

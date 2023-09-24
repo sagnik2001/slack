@@ -1,5 +1,5 @@
 import React from "react";
-import { Grid, Header,Image, Dropdown } from "semantic-ui-react";
+import { Grid, Header, Image, Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
 import firebase from "../../../server/firebase";
 import "./UserInfo.css";
@@ -19,7 +19,7 @@ const UserInfo = (props) => {
       .auth()
       .signOut()
       .then(() => console.log("user signed out"));
-      window.location.reload();
+    window.location.reload();
   };
 
   if (props.user) {

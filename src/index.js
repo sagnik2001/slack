@@ -18,6 +18,7 @@ import { setUser } from "./store/actioncreator";
 
 const store = createStore(combinedReducers);
 const Index = (props) => {
+  //this runs if the user is logged in previously
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
@@ -34,8 +35,6 @@ const Index = (props) => {
 
   return (
     <>
-      {/* <AppLoader loading={props.loading && props.location.pathname === "/"} /> */}
-
       <Switch>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
@@ -48,7 +47,6 @@ const Index = (props) => {
 const mapStateToProps = (state) => {
   return {
     currentUser: state.user.currentUser,
-    // loading: state.channel.loading
   };
 };
 
@@ -59,7 +57,7 @@ const mapDispatchToProps = (dispatch) => {
     },
   };
 };
-
+//gives access to all the router methods like location history
 const IndexWithRouter = withRouter(
   connect(mapStateToProps, mapDispatchToProps)(Index)
 );
