@@ -6,6 +6,8 @@
     "@testing-library/jest-dom": "^5.15.0",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
+    "caniuse-lite": "^1.0.30001538",
+    "firebase": "^10.4.0",
     "javascript-time-ago": "^2.3.10",
     "mime-type": "^4.0.0",
     "react": "^17.0.2",

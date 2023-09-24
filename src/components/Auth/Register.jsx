@@ -11,22 +11,25 @@ import {
 import firebase from "../../server/firebase";
 import { Link } from "react-router-dom";
 import register from "../../images/register.png";
-import logo from "../../images/slack.png";
 
 import "./Auth.css";
 const Register = () => {
+  //creating default user 
   let user = {
     username: "",
     email: "",
     password: "",
     confirmPassword: "",
   };
+
   let errors = [];
   let userDatabaseCollection = firebase.database().ref("users");
+
   const [User, setUser] = useState(user);
   const [Error, setError] = useState(errors);
   const [isLoading, SetLoading] = useState(false);
   const [isSuccess, SetSuccess] = useState(false);
+
   const handleInput = (event) => {
     let target = event.target;
     setUser((currentState) => {
@@ -53,6 +56,7 @@ const Register = () => {
 
     return true;
   };
+  //to check any form field is empty or not
   const isFormEmpty = () => {
     return (
       !User.username.length ||
@@ -75,7 +79,7 @@ const Register = () => {
     }
     return true;
   };
-
+  //submit the final data to the db
   const onSubmitHandler = (event) => {
     event.preventDefault();
     SetSuccess(false);
@@ -95,6 +99,7 @@ const Register = () => {
         });
     }
   };
+  //after creation of the user we need to update or add new data
   const updateUser = (createUser) => {
     if (createUser) {
       SetLoading(true);
@@ -139,7 +144,6 @@ const Register = () => {
         <Header icon as="h1">
           Register
         </Header>
-
         <Form onSubmit={onSubmitHandler}>
           <Segment stacked>
             <Form.Input
