@@ -12,12 +12,15 @@ const Channels = (props) => {
     description: "",
   });
   const [isLoadingState, setLoadingState] = useState(false);
+  //state maintaining all channel state
   const [channelsState, setChannelsState] = useState([]);
 
+    //getting channels collection db ref
   const channelsRef = firebase.database().ref("channels");
   const usersRef = firebase.database().ref("users");
 
   useEffect(() => {
+    //this helps in updating the state when a new child is created
     channelsRef.on("child_added", (snap) => {
       setChannelsState((currentState) => {
         let updatedState = [...currentState];
@@ -89,7 +92,7 @@ const Channels = (props) => {
     if (!checkIfFormValid()) {
       return;
     }
-
+    //getting channels key
     const key = channelsRef.push().key;
 
     const channel = {
