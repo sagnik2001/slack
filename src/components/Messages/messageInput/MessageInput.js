@@ -13,6 +13,7 @@ import {v4 as uuidv4 } from "uuid"
     const [messageState, setMessageState] = useState("");
 
     const [fileDialogState, setFileDialog] = useState(false);
+    console.log(props,"props")
 
     const createMessageInfo = (downloadUrl) => {
         return {
