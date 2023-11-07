@@ -4,13 +4,13 @@ import 'firebase/compat/storage'
 import 'firebase/compat/database'
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAvHbSfPRXSzs_ln6yiTavygHrXp3-Ua4E",
-    authDomain: "slack-clone-react-1a9c5.firebaseapp.com",
-    projectId: "slack-clone-react-1a9c5",
-    storageBucket: "slack-clone-react-1a9c5.appspot.com",
-    messagingSenderId: "343195143139",
-    appId: "1:343195143139:web:dbf2a594d8165beb626ed6",
-    measurementId: "G-EQ3YCPCS28"
-  };
-  firebase.initializeApp(firebaseConfig)
-  export default firebase
+  apiKey: "AIzaSyCyIUHDPzc0qBviYXO8q4Uu876hkAh6n8s",
+  authDomain: "chatify-52251.firebaseapp.com",
+  databaseURL: "https://chatify-52251-default-rtdb.firebaseio.com",
+  projectId: "chatify-52251",
+  storageBucket: "chatify-52251.appspot.com",
+  messagingSenderId: "448638780477",
+  appId: "1:448638780477:web:8140145817d9579a1d1654"
+};
+firebase.initializeApp(firebaseConfig)
+export default firebase
