@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import firebase from "../../../server/firebase";
 import { Menu, Icon } from "semantic-ui-react";
 import { setChannel } from "../../../store/actioncreator"
+import Notifications from "../Notifications/Notifications";
 
 const PrivateChat = (props) => {
 
@@ -59,7 +60,6 @@ const PrivateChat = (props) => {
     }, usersState)
 
     const displayUsers = () => {
-        console.log(usersState, "pi")
         if (usersState.length > 0 && props.user) {
             return usersState?.filter((user) => user?.id !== props?.user?.uid).map((user) => {
                 return <Menu.Item
@@ -70,6 +70,7 @@ const PrivateChat = (props) => {
                 >
                     <Icon name="circle" color={`${connectedusersState.indexOf(user.id) !== -1 ? "green" : "red"}`} />
                     {"@" + user.name}
+                    <Notifications user={props.user} channel={props.channel} notifyId={generateChannelId(user.id)} />
                 </Menu.Item>
             })
         }
