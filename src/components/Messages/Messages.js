@@ -7,12 +7,14 @@ import { connect } from "react-redux";
 import { Segment, Comment } from "semantic-ui-react";
 import { setfavouriteChannel, removefavouriteChannel } from "../../store/actioncreator";
 import "./Messages.css";
+import { useRef } from "react";
 
 const Messages = (props) => {
   const messageRef = firebase.database().ref("messages");
   const usersRef = firebase.database().ref("users");
   const [messageState, setMessageState] = useState([]);
   const [searchMessageState, setSearchMessageState] = useState("");
+  let ScrollRef = useRef()
 
   useEffect(() => {
     setMessageState([]);
@@ -45,6 +47,14 @@ const Messages = (props) => {
     }
   }, [props.user])
 
+  const onLoad = () => {
+    ScrollRef.current.scrollIntoView({ behaviour: 'smooth' })
+  }
+
+  useEffect(() => {
+    ScrollRef.current.scrollIntoView({ behaviour: 'smooth' })
+  }, [messageState])
+
 
   const displayMessages = () => {
     let messageToDisplay = searchMessageState ? filterMessageByTerm() : messageState;
@@ -52,6 +62,7 @@ const Messages = (props) => {
       return messageToDisplay.map((message) => {
         return (
           <MessageContent
+            imageLoaded={onLoad}
             ownMessage={message.user.id === props.user.uid}
             key={message.timestamp}
             message={message}
@@ -108,6 +119,7 @@ const Messages = (props) => {
       />
       <Segment className="messageContent">
         <Comment.Group>{displayMessages()}</Comment.Group>
+        <div ref={ScrollRef} />
       </Segment>
       <MessageInput />
     </div>
