@@ -5,7 +5,7 @@ import MessageInput from "./messageInput/MessageInput";
 import MessageContent from "./messageContent/MessageContent";
 import { connect } from "react-redux";
 import { Segment, Comment } from "semantic-ui-react";
-import { setfavouriteChannel,removefavouriteChannel } from "../../store/actioncreator";
+import { setfavouriteChannel, removefavouriteChannel } from "../../store/actioncreator";
 import "./Messages.css";
 
 const Messages = (props) => {
@@ -31,24 +31,24 @@ const Messages = (props) => {
   useEffect(() => {
 
     if (props.user) {
-        usersRef.child(props.user.uid).child("favourite")
-            .on('child_added', (snap) => {
-                props.setfavouriteChannel(snap.val());
-            })
+      usersRef.child(props.user.uid).child("favourite")
+        .on('child_added', (snap) => {
+          props.setfavouriteChannel(snap.val());
+        })
 
-        usersRef.child(props.user.uid).child("favourite")
-            .on('child_removed', (snap) => {
-                props.removefavouriteChannel(snap.val());
-            })
+      usersRef.child(props.user.uid).child("favourite")
+        .on('child_removed', (snap) => {
+          props.removefavouriteChannel(snap.val());
+        })
 
-        return () => usersRef.child(props.user.uid).child("favourite").off();
+      return () => usersRef.child(props.user.uid).child("favourite").off();
     }
-}, [props.user])
+  }, [props.user])
 
 
   const displayMessages = () => {
-      let messageToDisplay=searchMessageState ? filterMessageByTerm() :messageState;
-    if (messageToDisplay.length > 0) {
+    let messageToDisplay = searchMessageState ? filterMessageByTerm() : messageState;
+    if (messageToDisplay.length > 0 && props.user) {
       return messageToDisplay.map((message) => {
         return (
           <MessageContent
@@ -74,28 +74,28 @@ const Messages = (props) => {
     setSearchMessageState(target.value);
   };
 
-  const filterMessageByTerm=()=>{
-      const regex=new RegExp(searchMessageState,"gi");
+  const filterMessageByTerm = () => {
+    const regex = new RegExp(searchMessageState, "gi");
     const messages = messageState.reduce((acc, message) => {
-        if ((message.content && message.content.match(regex)) || message.user.name.match(regex)) {
-          acc.push(message);
-        }
-        return acc;
-      }, []);
-      return messages;
+      if ((message.content && message.content.match(regex)) || message.user.name.match(regex)) {
+        acc.push(message);
+      }
+      return acc;
+    }, []);
+    return messages;
   }
   const starChange = () => {
     let favouriteRef = usersRef.child(props.user.uid).child("favourite").child(props.channel.id);
     if (isStarred()) {
-        favouriteRef.remove();
+      favouriteRef.remove();
     } else {
-        favouriteRef.set({ channelId: props.channel.id, channelName: props.channel.name })
+      favouriteRef.set({ channelId: props.channel.id, channelName: props.channel.name })
     }
-}
+  }
 
-const isStarred = () => {
+  const isStarred = () => {
     return Object.keys(props.favouriteChannels).includes(props.channel?.id);
-}
+  }
   return (
     <div className="messages">
       <MessageHeader
@@ -122,8 +122,8 @@ const mapStateToProps = (state) => {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-      setfavouriteChannel: (channel) => dispatch(setfavouriteChannel(channel)),
-      removefavouriteChannel: (channel) => dispatch(removefavouriteChannel(channel)),
+    setfavouriteChannel: (channel) => dispatch(setfavouriteChannel(channel)),
+    removefavouriteChannel: (channel) => dispatch(removefavouriteChannel(channel)),
   }
 }
-export default connect(mapStateToProps,mapDispatchToProps)(Messages);
+export default connect(mapStateToProps, mapDispatchToProps)(Messages);
