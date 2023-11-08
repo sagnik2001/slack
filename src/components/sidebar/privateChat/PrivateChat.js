@@ -59,8 +59,9 @@ const PrivateChat = (props) => {
     }, usersState)
 
     const displayUsers = () => {
-        if (usersState.length > 0) {
-            return usersState.filter((user) => user.id !== props.user.uid).map((user) => {
+        console.log(usersState, "pi")
+        if (usersState.length > 0 && props.user) {
+            return usersState?.filter((user) => user?.id !== props?.user?.uid).map((user) => {
                 return <Menu.Item
                     key={user.id}
                     name={user.name}

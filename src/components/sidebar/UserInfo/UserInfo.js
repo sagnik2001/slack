@@ -1,10 +1,12 @@
 import React from "react";
-import { Grid, Header,Image, Dropdown } from "semantic-ui-react";
+import { Grid, Header, Image, Dropdown } from "semantic-ui-react";
 import { connect } from "react-redux";
 import firebase from "../../../server/firebase";
 import "./UserInfo.css";
+import { useNavigate } from "react-router";
 
 const UserInfo = (props) => {
+  const naviagte = useNavigate()
   const getDropDownOptions = () => {
     return [
       {
@@ -18,8 +20,13 @@ const UserInfo = (props) => {
     firebase
       .auth()
       .signOut()
-      .then(() => console.log("user signed out"));
-      window.location.reload();
+      .then(() => {
+        console.log("user signed out");
+        naviagte("/login")
+      })
+      .catch((e) => {
+        console.log("error", e)
+      })
   };
 
   if (props.user) {
