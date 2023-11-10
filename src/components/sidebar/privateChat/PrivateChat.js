@@ -79,8 +79,14 @@ const PrivateChat = (props) => {
     const selectUser = (user) => {
         let userTemp = { ...user }
         userTemp.id = generateChannelId(user.id)
+        lastVisit(props.user, props.channel)
+        lastVisit(props.user, userTemp)
         props.selectChannel(userTemp)
-
+    }
+    const lastVisit = (user, channel) => {
+        const lastVisited = usersRef.child(user.uid).child("lastVisited").child(channel.id)
+        lastVisited.set(firebase.database.ServerValue.TIMESTAMP)
+        lastVisited.onDisconnect().set(firebase.database.ServerValue.TIMESTAMP)
     }
     const generateChannelId = (userId) => {
         if (props.user.uid < userId) {
