@@ -16,5 +16,4 @@ Guide on how to install the project locally.
    ```bash
    npm start
    
-## Hosted Link 
- https://chatifyus.netlify.app/
+
