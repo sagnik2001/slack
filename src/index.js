@@ -24,7 +24,7 @@ export const withRouter = (Component) => {
 }
 
 const Index = (props) => {
-  console.log(props)
+  // console.log(props)
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -38,7 +38,7 @@ const Index = (props) => {
     })
   }, []);
 
-  console.log(props.currentUser)
+  // console.log(props.currentUser)
 
   return (<>
     {/* <AppLoader loading={props.loading && props.location.pathname === "/"} /> */}
