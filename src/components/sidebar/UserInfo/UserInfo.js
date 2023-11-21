@@ -21,7 +21,7 @@ const UserInfo = (props) => {
       .auth()
       .signOut()
       .then(() => {
-        console.log("user signed out");
+        // console.log("user signed out");
         naviagte("/login")
       })
       .catch((e) => {

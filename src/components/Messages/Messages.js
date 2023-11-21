@@ -58,6 +58,7 @@ const Messages = (props) => {
 
   const displayMessages = () => {
     let messageToDisplay = searchMessageState ? filterMessageByTerm() : messageState;
+    
     if (messageToDisplay.length > 0 && props.user) {
       return messageToDisplay.map((message) => {
         return (
@@ -118,7 +119,7 @@ const Messages = (props) => {
         uniqueUsers={uniqueUsersCount()}
       />
       <Segment className="messageContent">
-        <Comment.Group>{displayMessages()}</Comment.Group>
+        <Comment.Group className="messageDisplay">{displayMessages()}</Comment.Group>
         <div ref={ScrollRef} />
       </Segment>
       <MessageInput />

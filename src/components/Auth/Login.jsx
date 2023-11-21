@@ -51,7 +51,7 @@ const Login = () => {
         .signInWithEmailAndPassword(User.email, User.password)
         .then((user) => {
           SetLoading(false);
-          console.log(user);
+          // console.log(user);
         })
         .catch((servererr) => {
           SetLoading(false);
