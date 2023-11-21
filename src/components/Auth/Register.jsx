@@ -11,7 +11,6 @@ import {
 import firebase from "../../server/firebase";
 import { Link } from "react-router-dom";
 import register from "../../images/register.png";
-import logo from "../../images/slack.png";
 
 import "./Auth.css";
 const Register = () => {

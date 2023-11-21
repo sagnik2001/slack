@@ -11,9 +11,9 @@ import { createStore } from 'redux';
 import { combinedReducers } from './store/reducer';
 import { setUser } from './store/actioncreator'
 import { useNavigate } from 'react-router';
+import './index.css'
 
 const store = createStore(combinedReducers)
-
 
 export const withRouter = (Component) => {
   const Wrapper = (props) => {

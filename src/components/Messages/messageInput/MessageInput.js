@@ -63,7 +63,7 @@ const MessageInput = (props) => {
           }}
         />
         <Button icon="upload" onClick={() => setFileDialog(true)} />
-        <Button icon="video" onClick={() => setAudioDialog(true)} />
+        <Button icon="microphone icon" onClick={() => setAudioDialog(true)} />
       </>
     );
   };
