@@ -35,7 +35,7 @@ const UserInfo = (props) => {
         <Grid.Column>
           <Grid.Row className="userinfo_grid_row">
             <Header inverted as="h2">
-              <Header.Content>Chatify</Header.Content>
+              <Header.Content style={{color:"blueViolet"}}>Chatify</Header.Content>
             </Header>
             <Header className="userinfo_displayname" inverted as="h4">
               <Dropdown

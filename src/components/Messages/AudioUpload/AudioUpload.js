@@ -32,10 +32,10 @@ import mime from "mime-types"
                     />
                 </Modal.Content>
                 <Modal.Actions>
-                    <Button color='green' onClick={onSubmit}>
+                    <Button color='green' onClick={onSubmit} style={{width:"100px"}}>
                         <Icon name="checkmark">Add</Icon>
                     </Button>
-                    <Button color='red' onClick={props.onClose}>
+                    <Button color='red' onClick={props.onClose} style={{width:"100px"}}>
                         <Icon name="remove">Cancel</Icon>
                     </Button>
                 </Modal.Actions>
