@@ -2,7 +2,6 @@ import React from "react";
 import ReactAudioPlayer from "react-audio-player";
 
 const AudioPreview = ({ audioUrl }) => {
-  console.log(audioUrl);
   return (
     <ReactAudioPlayer
       class="play"
