@@ -17,13 +17,17 @@ const MessageInput = (props) => {
   const createMessageInfo = (downloadUrl) => {
 
     let image = "",
-      audio = "";
+      audio = "",
+      doc="";
     if (downloadUrl && downloadUrl.includes("image")) {
       image = downloadUrl;
     }
     if (downloadUrl && downloadUrl.includes("audio")) {
       audio = downloadUrl;
     }
+    // if (downloadUrl && downloadUrl.includes("audio")) {
+    //   doc = downloadUrl;
+    // }
     return {
       user: {
         avatar: props.user.photoURL,
@@ -67,9 +71,29 @@ const MessageInput = (props) => {
       </>
     );
   };
-  const uploadImage = (file, contentType) => {
-    const storageRef = firebase.storage().ref("images");
-    const filePath = `chat/images/${uuidv4()}.jpg`;
+  const attachFile = (file, contentType) => {
+    console.log(file,contentType,'jii');
+
+    let storageRef={},filePath="";
+
+    if(contentType==='image/png')
+    {
+      storageRef = firebase.storage().ref("images");
+      console.log(typeof(storageRef))
+      filePath = `chat/images/${uuidv4()}.jpg`;
+    }
+    else if(contentType==='audio/mpeg')
+    {
+      console.log('audio')
+      storageRef = firebase.storage().ref("audio");
+      filePath = `chat/audio/${uuidv4()}.mp3`;
+    
+    }
+    else if(contentType==='application/pdf')
+    {
+      storageRef = firebase.storage().ref("doc");
+      filePath = `chat/doc/${uuidv4()}.docx`;
+    }
 
     storageRef
       .child(filePath)
@@ -78,30 +102,67 @@ const MessageInput = (props) => {
         data.ref
           .getDownloadURL()
           .then((url) => {
-            sendMessage(url);
+            // sendMessage(url);
+            console.log(url,'final url')
           })
           .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
   };
-  const uploadAudio = (file, contentType) => {
-    const storageRef = firebase.storage().ref("audio");
+  // const uploadImage = (file, contentType) => {
+  //   const storageRef = firebase.storage().ref("images");
+  //   const filePath = `chat/images/${uuidv4()}.jpg`;
 
-    const audioPath = `chat/audio/${uuidv4()}.mp3`;
+  //   storageRef
+  //     .child(filePath)
+  //     .put(file, { contentType: contentType })
+  //     .then((data) => {
+  //       data.ref
+  //         .getDownloadURL()
+  //         .then((url) => {
+  //           sendMessage(url);
+  //         })
+  //         .catch((err) => console.log(err));
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+  // const uploadAudio = (file, contentType) => {
+  //   const storageRef = firebase.storage().ref("audio");
 
-    storageRef
-      .child(audioPath)
-      .put(file, { contentType: contentType })
-      .then((data) => {
-        data.ref
-          .getDownloadURL()
-          .then((url) => {
-            sendMessage(url);
-          })
-          .catch((err) => console.log(err));
-      })
-      .catch((err) => console.log(err));
-  };
+  //   const audioPath = `chat/audio/${uuidv4()}.mp3`;
+
+  //   storageRef
+  //     .child(audioPath)
+  //     .put(file, { contentType: contentType })
+  //     .then((data) => {
+  //       data.ref
+  //         .getDownloadURL()
+  //         .then((url) => {
+  //           sendMessage(url);
+  //         })
+  //         .catch((err) => console.log(err));
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
+  // const uploadDoc = (file, contentType) => {
+  //   const storageRef = firebase.storage().ref("doc");
+
+  //   const audioPath = `chat/doc/${uuidv4()}.pdf`;
+
+  //   storageRef
+  //     .child(audioPath)
+  //     .put(file, { contentType: contentType })
+  //     .then((data) => {
+  //       data.ref
+  //         .getDownloadURL()
+  //         .then((url) => {
+  //           // sendMessage(url);
+  //           console.log(url,'doc url');
+  //         })
+  //         .catch((err) => console.log(err));
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
   return (
     <Segment style={{ backgroundColor: "rgb(180,180,185)" }}>
       <Input
@@ -113,15 +174,15 @@ const MessageInput = (props) => {
         labelPosition="right"
       />
       <ImageUpload
-        uploadImage={uploadImage}
+        uploadImage={attachFile}
         open={fileDialogState}
         onClose={() => setFileDialog(false)}
       />
-      <AudioUpload
+      {/* <AudioUpload
         uploadAudio={uploadAudio}
         open={audioDialogState}
         onClose={() => setAudioDialog(false)}
-      />
+      /> */}
     </Segment>
   );
 };
