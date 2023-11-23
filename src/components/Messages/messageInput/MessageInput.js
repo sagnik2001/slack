@@ -18,7 +18,7 @@ const MessageInput = (props) => {
 
     let image = "",
       audio = "",
-      doc="";
+      doc = "";
     if (downloadUrl && downloadUrl.includes("image")) {
       image = downloadUrl;
     }
@@ -67,30 +67,26 @@ const MessageInput = (props) => {
           }}
         />
         <Button icon="upload" onClick={() => setFileDialog(true)} />
-        <Button icon="microphone icon" onClick={() => setAudioDialog(true)} />
       </>
     );
   };
   const attachFile = (file, contentType) => {
-    console.log(file,contentType,'jii');
+    console.log(file, contentType, 'jii');
 
-    let storageRef={},filePath="";
+    let storageRef = {}, filePath = "";
 
-    if(contentType==='image/png')
-    {
+    if (contentType === 'image/png') {
       storageRef = firebase.storage().ref("images");
-      console.log(typeof(storageRef))
+      console.log(typeof (storageRef))
       filePath = `chat/images/${uuidv4()}.jpg`;
     }
-    else if(contentType==='audio/mpeg')
-    {
+    else if (contentType === 'audio/mpeg') {
       console.log('audio')
       storageRef = firebase.storage().ref("audio");
       filePath = `chat/audio/${uuidv4()}.mp3`;
-    
+
     }
-    else if(contentType==='application/pdf')
-    {
+    else if (contentType === 'application/pdf') {
       storageRef = firebase.storage().ref("doc");
       filePath = `chat/doc/${uuidv4()}.docx`;
     }
@@ -102,8 +98,8 @@ const MessageInput = (props) => {
         data.ref
           .getDownloadURL()
           .then((url) => {
-            // sendMessage(url);
-            console.log(url,'final url')
+            sendMessage(url);
+            console.log(url, 'final url')
           })
           .catch((err) => console.log(err));
       })
@@ -164,7 +160,7 @@ const MessageInput = (props) => {
   //     .catch((err) => console.log(err));
   // };
   return (
-    <Segment style={{ backgroundColor: "rgb(180,180,185)" }}>
+    <Segment style={{ backgroundColor: "rgb(180,180,185)", height: '8%' }}>
       <Input
         onChange={onMessageChange}
         fluid={true}

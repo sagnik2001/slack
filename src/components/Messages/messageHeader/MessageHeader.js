@@ -3,7 +3,7 @@ import { Segment, Header, Input, Icon } from "semantic-ui-react";
 
 const MessageHeader = (props) => {
   return (
-    <Segment clearing style={{backgroundColor:"rgba(209,210,211,.5)"}}>
+    <Segment clearing style={{backgroundColor:"rgba(209,210,211,.5)", height:'10%'}}>
       <Header floated="left" fluid="true" as="h2" >
         <span>
           {(props.isPrivateChat ? "@" : "#")+ props.channelName}

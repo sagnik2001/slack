@@ -24,6 +24,7 @@ const MessageContent = (props) => {
             onLoad={props.imageLoaded}
             src={props.message.image}
             style={{ marginTop: "1rem" }}
+            size="large"
           />
         ) : props.message.audio ? (
           <AudioPreview audioUrl={props.message.audio} />

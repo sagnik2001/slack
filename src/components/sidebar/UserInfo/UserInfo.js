@@ -7,21 +7,15 @@ import { useNavigate } from "react-router";
 
 const UserInfo = (props) => {
   const naviagte = useNavigate()
-  const getDropDownOptions = () => {
-    return [
-      {
-        key: "signout",
-        text: <span onClick={signOut}>Sign Out</span>,
-      },
-    ];
-  };
+
+
 
   const signOut = () => {
     firebase
       .auth()
       .signOut()
       .then(() => {
-        // console.log("user signed out");
+        console.log("user signed out");
         naviagte("/login")
       })
       .catch((e) => {
@@ -35,10 +29,10 @@ const UserInfo = (props) => {
         <Grid.Column>
           <Grid.Row className="userinfo_grid_row">
             <Header inverted as="h2">
-              <Header.Content style={{color:"blueViolet"}}>Chatify</Header.Content>
+              <Header.Content>Chatify</Header.Content>
             </Header>
             <Header className="userinfo_displayname" inverted as="h4">
-              <Dropdown
+              {/* <Dropdown
                 trigger={
                   <span>
                     <Image src={props.user.photoURL} avatar></Image>
@@ -46,7 +40,17 @@ const UserInfo = (props) => {
                   </span>
                 }
                 options={getDropDownOptions()}
-              ></Dropdown>
+              ></Dropdown> */}
+              <Dropdown text={
+                <span>
+                  <Image src={props.user.photoURL} avatar></Image>
+                  {props.user.displayName}
+                </span>
+              }>
+                <Dropdown.Menu>
+                  <Dropdown.Item onClick={signOut} text={<span >Sign Out</span>} />
+                </Dropdown.Menu>
+              </Dropdown>
             </Header>
           </Grid.Row>
         </Grid.Column>

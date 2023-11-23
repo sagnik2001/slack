@@ -1,12 +1,15 @@
-.messageContent{
-    height:707px;
-    overflow-y: scroll;
-    padding: 2rem 2rem !important;
-  }
-  .messageDisplay{
-    max-width: 1000px !important;
-  }
-  .messages{
-    padding-top:20px;
-    
-  }
+.messageContent {
+  height: 78%;
+  overflow-y: scroll;
+  padding: 2rem 2rem !important;
+}
+
+.messageDisplay {
+  max-width: 1000px !important;
+}
+
+.messages {
+  padding-top: 30px;
+  overflow-y: hidden;
+  height: 100vh;
+}
